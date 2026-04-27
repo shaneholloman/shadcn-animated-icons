@@ -1,27 +1,35 @@
 import { getIcons } from "@/actions/get-icons";
 import { LINK, SITE } from "@/constants";
+import { kebabToPascalCase } from "@/lib/kebab-to-pascal";
 
 export function GET() {
   const icons = getIcons();
-  const iconNames = icons.map((icon) => icon.name).join(", ");
+
+  const iconLinks = icons
+    .map((icon) => {
+      const pascal = kebabToPascalCase(icon.name);
+      const readable = icon.name.replace(/-/g, " ");
+      const keywords = icon.keywords.slice(0, 4).join(", ");
+      return `- [${pascal}](${SITE.URL}/icons/${icon.name}.md): Animated ${readable} icon for React${keywords ? ` — keywords: ${keywords}` : ""}`;
+    })
+    .join("\n");
 
   const content = `# ${SITE.NAME}
 
-> Beautifully crafted animated icons
+> Open-source collection of ${icons.length}+ beautifully crafted animated React icons based on Lucide, powered by Motion. MIT licensed and copy-paste ready.
 
-${SITE.NAME} is an open-source (MIT License) collection of smooth animated icons for React projects.
+## Docs
 
-## Overview
+- [Home](${SITE.URL}/index.md): Browse all icons and copy install commands
+- [Sponsorship](${SITE.URL}/sponsorship.md): Support the project
+- [Contributing Guide](${LINK.GITHUB}/blob/main/CONTRIBUTING.md): How to add or improve icons
+- [License (MIT)](${LINK.LICENSE}): License terms
+- [GitHub Repository](${LINK.GITHUB}): Source code and issue tracker
 
-- Website: ${SITE.URL}
-- GitHub: ${LINK.GITHUB}
-- Author: ${SITE.AUTHOR.TWITTER} (${LINK.TWITTER})
+## Skills
 
-## Tech Stack
-
-- React components with TypeScript
-- Animations powered by Motion (${LINK.MOTION})
-- Based on Lucide icons (${LINK.LUCIDE})
+- [Agent Skill](${SITE.URL}/skill.md): Operating guide for installing and using icons
+- [Full Documentation](${SITE.URL}/llms-full.txt): Complete corpus of every icon and usage
 
 ## Installation
 
@@ -29,36 +37,31 @@ ${SITE.NAME} is an open-source (MIT License) collection of smooth animated icons
 npx shadcn@latest add "${SITE.URL}/r/{icon-name}.json"
 \`\`\`
 
-Replace {icon-name} with the desired icon name (kebab-case).
-
-## Available Icons (${icons.length} total)
-
-${iconNames}
+Replace \`{icon-name}\` with the desired icon name in kebab-case (e.g. \`activity\`, \`arrow-right\`).
 
 ## Usage
 
-Each icon is a React component that animates on hover. Example:
-
 \`\`\`tsx
-import { Activity } from '@/components/icons/activity';
+import { Activity } from "@/components/icons/activity";
 
-export function MyComponent() {
+export function Demo() {
   return <Activity className="size-6" />;
 }
 \`\`\`
 
-## Ports
+Each icon is a React component that animates on hover. All standard SVG props are forwarded.
 
-- Svelte: https://www.movingicons.dev/ by @jis3r
-- Vue: https://imfenghuang.github.io/icons/ by @imfenghuang
+## Icons
 
-## License
+${iconLinks}
 
-MIT License - free for personal and commercial use.
+## Optional
 
-## Contributing
-
-Contributions welcome! See CONTRIBUTING.md for guidelines.
+- [Svelte port](https://www.movingicons.dev/): by @jis3r
+- [Vue port](https://imfenghuang.github.io/icons/): by @imfenghuang
+- [Angular port](https://github.com/ajitzero/animated-icons): by @ajitzero
+- [Flutter port](https://pub.dev/packages/flutter_lucide_animated): by @ravikovind
+- [Author X](${LINK.TWITTER}): ${SITE.AUTHOR.TWITTER} on X
 `;
 
   return new Response(content, {
