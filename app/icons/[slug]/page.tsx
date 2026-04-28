@@ -41,7 +41,7 @@ export const generateMetadata = async ({
   const pascalName = kebabToPascalCase(slug);
   const [keyword] = pascalName.split("Icon");
 
-  const title = `${keyword} Icon - Animated React Icon`;
+  const title = `${keyword} icon`;
   const description = `Free animated ${icon.name} icon for React. Smooth Motion-powered animation, copy-paste ready. Keywords: ${icon.keywords.slice(0, 5).join(", ")}.`;
 
   return {
@@ -127,11 +127,12 @@ const IconPage = async ({ params }: Props) => {
 
       <section className="mx-auto mt-12 flex w-full max-w-[1292px] flex-col items-start px-4 min-[880px]:my-[60px]">
         <Link
+          aria-label="Back to all icons"
           className="mb-8 flex items-center gap-2 font-sans text-secondary text-sm transition-[color] duration-100 hover:text-primary focus-visible:outline-1 focus-visible:outline-primary focus-visible:outline-offset-2"
           href="/"
         >
           <ArrowLeftIcon className="size-4" />
-          Back to all icons
+          Back
         </Link>
 
         <div className="flex w-full flex-col gap-6 min-[880px]:flex-row min-[880px]:items-center">

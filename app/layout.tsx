@@ -82,14 +82,9 @@ export default function RootLayout({
             enableSystem
           >
             <PackageNameProvider>
-              <Header />
               <main className="flex-1">
                 <blockquote className="sr-only">
-                  For the complete documentation index, see{" "}
-                  <a href="/llms.txt">llms.txt</a>. Markdown variants are
-                  available by appending <code>.md</code> to any URL or sending
-                  an <code>Accept: text/markdown</code> header. An agent skill
-                  is available at <a href="/skill.md">/skill.md</a>.
+                  <a href="/llms.txt">llms.txt</a>
                 </blockquote>
                 <NuqsAdapter>
                   {children}
@@ -117,7 +112,15 @@ export default function RootLayout({
                     }}
                   />
                 </NuqsAdapter>
+                <blockquote className="sr-only">
+                  For the complete documentation index, see{" "}
+                  <a href="/llms.txt">llms.txt</a>. Markdown variants are
+                  available by appending <code>.md</code> to any URL or sending
+                  an <code>Accept: text/markdown</code> header. An agent skill
+                  is available at <a href="/skill.md">/skill.md</a>.
+                </blockquote>
               </main>
+              <Header />
               <Analytics />
               <Footer />
             </PackageNameProvider>
