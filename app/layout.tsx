@@ -67,9 +67,6 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <head>
-        <JsonLdScripts />
-      </head>
       <body
         className={`${gtCinetype.className} relative bg-background antialiased`}
       >
@@ -91,6 +88,7 @@ export default function RootLayout({
               <Header />
               <Analytics />
               <Footer />
+              <JsonLdScripts />
             </PackageNameProvider>
           </ThemeProvider>
         </div>

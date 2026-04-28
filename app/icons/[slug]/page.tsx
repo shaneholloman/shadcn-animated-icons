@@ -116,15 +116,6 @@ const IconPage = async ({ params }: Props) => {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", url: SITE.URL },
-          { name: "Icons", url: `${SITE.URL}/icons` },
-          { name: pascalName, url: `${SITE.URL}/icons/${slug}` },
-        ]}
-      />
-      <IconJsonLd icon={icon} />
-
       <section className="mx-auto mt-12 flex w-full max-w-[1292px] flex-col items-start px-4 min-[880px]:my-[60px]">
         <Link
           aria-label="Back to all icons"
@@ -173,6 +164,14 @@ const IconPage = async ({ params }: Props) => {
 
         <SimilarIcons currentIcon={icon} />
       </section>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: SITE.URL },
+          { name: "Icons", url: `${SITE.URL}/icons` },
+          { name: pascalName, url: `${SITE.URL}/icons/${slug}` },
+        ]}
+      />
+      <IconJsonLd icon={icon} />
     </>
   );
 };
