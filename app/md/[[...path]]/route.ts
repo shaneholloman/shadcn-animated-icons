@@ -18,6 +18,10 @@ const renderHome = () => {
 
 > ${SITE.DESCRIPTION.SHORT}
 
+Beautifully crafted animated icons — an open-source ([MIT License](${LINK.LICENSE})) collection of smooth animated icons for your projects. Feel free to use them, share your feedback, and let's make this library awesome together.
+
+Crafted with [Motion](${LINK.MOTION}) & [Lucide](${LINK.LUCIDE}). These icons were a way to practice what the author learned from the [animations.dev](https://animations.dev) course; it really helped to understand how to turn simple transitions into the polished motion you see here.
+
 ${SITE.DESCRIPTION.LONG}
 
 ## Links
@@ -35,13 +39,13 @@ ${SITE.DESCRIPTION.LONG}
 
 ## Installation
 
-Install a single icon via the shadcn CLI:
+Install a single icon via the shadcn CLI. Replace \`<icon-name>\` with the desired icon name in kebab-case:
 
 \`\`\`bash
-npx shadcn@latest add "${SITE.URL}/r/{icon-name}.json"
+npx shadcn@latest add "${SITE.URL}/r/<icon-name>.json"
 \`\`\`
 
-Replace \`{icon-name}\` with the desired icon name in kebab-case.
+Supported package managers: npm, pnpm, yarn, bun. The CLI drops a single React component file into \`components/icons/<icon-name>.tsx\` and adds \`motion\` to dependencies if missing.
 
 ## Usage
 
@@ -53,14 +57,19 @@ export function Demo() {
 }
 \`\`\`
 
-Each icon is a React component that animates on hover. All standard SVG props are forwarded.
+Each icon is a React component that animates on hover. All standard SVG props are forwarded — pass \`className\`, \`onClick\`, \`aria-label\`, etc. Component names are PascalCase versions of the kebab-case file name (e.g. \`arrow-right\` → \`ArrowRight\`).
 
 ## Discover
 
 - Index of every page: ${SITE.URL}/llms.txt
 - Full corpus for long-context agents: ${SITE.URL}/llms-full.txt
 - Agent skill: ${SITE.URL}/skill.md
-- Per-icon markdown: ${SITE.URL}/icons/{icon-name}.md
+- Nested icons index: ${SITE.URL}/icons/llms.txt
+- Per-icon markdown: ${SITE.URL}/icons/<name>.md
+
+## MCP
+
+A Model Context Protocol server is available at \`${SITE.URL}/mcp\` (Streamable HTTP). Tools: \`search_icons\`, \`list_icons\`, \`get_icon\`. Connect any MCP-compatible client (Cursor, Claude Desktop, etc.) directly to this URL.
 
 ## Ports
 

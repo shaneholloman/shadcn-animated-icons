@@ -30,15 +30,15 @@ export function GET(req: Request) {
 
 ## MCP
 
-- [MCP server](${SITE.URL}/mcp): Model Context Protocol endpoint exposing search_icons, list_icons, and get_icon tools
+A Model Context Protocol endpoint is available at \`${SITE.URL}/mcp\` (Streamable HTTP) and exposes \`search_icons\`, \`list_icons\`, and \`get_icon\` tools. Configure your MCP-compatible client to connect there directly. See \`${SITE.URL}/skill.md\` for usage notes.
 
 ## Installation
 
-\`\`\`bash
-npx shadcn@latest add "${SITE.URL}/r/{icon-name}.json"
-\`\`\`
+Install a single icon via the shadcn CLI. Replace \`<icon-name>\` with the desired icon name in kebab-case (e.g. \`activity\`, \`arrow-right\`):
 
-Replace \`{icon-name}\` with the desired icon name in kebab-case (e.g. \`activity\`, \`arrow-right\`).
+\`\`\`bash
+npx shadcn@latest add "${SITE.URL}/r/<icon-name>.json"
+\`\`\`
 
 ## Usage
 

@@ -57,13 +57,11 @@ Built with React, TypeScript, [Motion](${LINK.MOTION}) for animations, and based
 
 # Installation
 
-Install any single icon via the shadcn CLI:
+Install any single icon via the shadcn CLI. Replace \`<icon-name>\` with a kebab-case name from the list below:
 
 \`\`\`bash
-npx shadcn@latest add "${SITE.URL}/r/{icon-name}.json"
+npx shadcn@latest add "${SITE.URL}/r/<icon-name>.json"
 \`\`\`
-
-Replace \`{icon-name}\` with a kebab-case name from the list below.
 
 # Usage
 
@@ -81,8 +79,8 @@ export function Demo() {
 
 - Index: ${SITE.URL}/llms.txt
 - Skill: ${SITE.URL}/skill.md
-- Per-icon page: ${SITE.URL}/icons/{name}
-- Per-icon markdown: ${SITE.URL}/icons/{name}.md
+- Per-icon page: ${SITE.URL}/icons/<name>
+- Per-icon markdown: ${SITE.URL}/icons/<name>.md
 
 # Ports
 

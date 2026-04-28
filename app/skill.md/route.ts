@@ -19,7 +19,7 @@ Use this skill when a user asks to add an animated icon to a React or Next.js pr
 
 - Index of all icons: ${SITE.URL}/llms.txt
 - Full corpus (long-context): ${SITE.URL}/llms-full.txt
-- Per-icon docs: ${SITE.URL}/icons/{name}.md (replace \`{name}\` with kebab-case icon name)
+- Per-icon docs: ${SITE.URL}/icons/<name>.md (replace \`<name>\` with kebab-case icon name)
 
 Icon names follow Lucide's kebab-case convention (\`activity\`, \`arrow-right\`, \`circle-check\`, etc.).
 
@@ -28,10 +28,10 @@ Icon names follow Lucide's kebab-case convention (\`activity\`, \`arrow-right\`,
 Use the shadcn CLI:
 
 \`\`\`bash
-npx shadcn@latest add "${SITE.URL}/r/{icon-name}.json"
+npx shadcn@latest add "${SITE.URL}/r/<icon-name>.json"
 \`\`\`
 
-This drops a single React component file into the user's project under \`components/icons/{icon-name}.tsx\` and adds \`motion\` to dependencies if missing.
+This drops a single React component file into the user's project under \`components/icons/<icon-name>.tsx\` and adds \`motion\` to dependencies if missing.
 
 ## Use the component
 
@@ -51,6 +51,10 @@ The component name is the PascalCase form of the icon's kebab-case name. Compone
 - Requires \`motion\` (added automatically by the shadcn CLI when installing the first icon).
 - Tailwind CSS is recommended for sizing/coloring but not required.
 - MIT licensed (${LINK.LICENSE}) — free for personal and commercial use.
+
+## MCP tools (optional)
+
+An MCP server is available at \`${SITE.URL}/mcp\` (Streamable HTTP). Tools: \`search_icons\` (fuzzy lookup by name/keyword), \`list_icons\` (paginated list), \`get_icon\` (install command + usage snippet for one icon). Use these when you have an MCP-compatible host instead of fetching markdown.
 
 ## Common pitfalls
 
