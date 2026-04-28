@@ -12,7 +12,7 @@ type Props = {
   icons: Icon[];
 };
 
-const INITIAL_VISIBLE = 50;
+const INITIAL_VISIBLE = 30;
 const CHUNK_SIZE = 50;
 
 const ICON_MAP = new Map(ICON_LIST.map((item) => [item.name, item.icon]));
