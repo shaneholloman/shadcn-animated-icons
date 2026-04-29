@@ -38,10 +38,10 @@ const INK_VARIANTS: Variants = {
     transition: { duration: 0.4 },
   },
   animate: {
-    opacity: [1, 0.3, 1.5, 1],
-    scaleX: [1, 0.8, 1.1, 1],
+    opacity: [1, 0.4, 1.4, 1],
+    scaleX: [1, 0.85, 0.85, 1],
     transition: {
-      duration: 0.7,
+      duration: 0.8,
       ease: "easeInOut",
       times: [0, 0.35, 0.65, 1],
     },
