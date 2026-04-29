@@ -296,6 +296,7 @@ import { SquareChevronRightIcon } from "@/icons/square-chevron-right";
 import { SquareChevronUpIcon } from "@/icons/square-chevron-up";
 import { SquarePenIcon } from "@/icons/square-pen";
 import { SquareStackIcon } from "@/icons/square-stack";
+import { StampIcon } from "@/icons/stamp";
 import { StethoscopeIcon } from "@/icons/stethoscope";
 import { SunIcon } from "@/icons/sun";
 import { SunDimIcon } from "@/icons/sun-dim";
@@ -410,6 +411,20 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
+  {
+    name: "stamp",
+    icon: StampIcon,
+    keywords: [
+      "stamp",
+      "seal",
+      "approve",
+      "mark",
+      "ink",
+      "press",
+      "official",
+      "validate",
+    ],
+  },
   {
     name: "layout-grid",
     icon: LayoutGridIcon,
