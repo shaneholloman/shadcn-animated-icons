@@ -402,6 +402,16 @@ import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
 import { TruckIcon } from "./truck";
+import { AlarmClockCheckIcon } from "./alarm-clock-check";
+import { AlarmClockMinusIcon } from "./alarm-clock-minus";
+import { AlarmSmokeIcon } from "./alarm-smoke";
+import { AlarmClockPlusIcon } from "./alarm-clock-plus";
+import { AntennaIcon } from "./antenna";
+import { PhoneIcon } from "./phone";
+import { PhoneCallIcon } from "./phone-call";
+import { PhoneForwardedIcon } from "./phone-forwarded";
+import { PhoneIncomingIcon } from "./phone-incoming";
+import { PhoneMissedIcon } from "./phone-missed";
 
 type IconListItem = {
   name: string;
@@ -410,6 +420,57 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
+  
+  {
+    name: "alarm-clock-check",
+    icon: AlarmClockCheckIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "alarm-clock-minus",
+    icon: AlarmClockMinusIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "alarm-smoke",
+    icon: AlarmSmokeIcon,
+    keywords: ["alarm", "smoke", "fire", "smoke", "fire alarm"],
+  },
+  {
+    name: "alarm-clock-plus",
+    icon: AlarmClockPlusIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "antenna",
+    icon: AntennaIcon,
+    keywords: ["antenna", "radio", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone",
+    icon: PhoneIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-call",
+    icon: PhoneCallIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-forward",
+    icon: PhoneForwardedIcon,
+    keywords: ["phone", "forward", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-incoming",
+    icon: PhoneIncomingIcon,
+    keywords: ["phone", "incoming", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-missed",
+    icon: PhoneMissedIcon,
+    keywords: ["phone", "missed", "communication", "signal", "wireless"],
+  },
   {
     name: "layout-grid",
     icon: LayoutGridIcon,
