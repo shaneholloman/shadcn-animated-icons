@@ -15,10 +15,20 @@ interface AlarmClockCheckIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const SECONDARY_PATH_VARIANTS: Variants = {
+const PATH_VARIANTS: Variants = {
   normal: {
     y: 0,
     x: 0,
+    transition: {
+      duration: 0.2,
+      type: "spring",
+      stiffness: 200,
+      damping: 25,
+    },
+  },
+  animate: {
+    y: -1.5,
+    x: [-1, 1, -1, 1, -1, 0],
     transition: {
       y: {
         duration: 0.2,
@@ -26,8 +36,24 @@ const SECONDARY_PATH_VARIANTS: Variants = {
         stiffness: 200,
         damping: 25,
       },
-      // Cancel infinite `x` repeat from `animate` when returning to rest
-      x: { duration: 0.15, repeat: 0, ease: "easeOut" },
+      x: {
+        duration: 0.3,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "linear",
+      },
+    },
+  },
+};
+
+const SECONDARY_PATH_VARIANTS: Variants = {
+  normal: {
+    y: 0,
+    x: 0,
+    transition: {
+      duration: 0.2,
+      type: "spring",
+      stiffness: 200,
+      damping: 25,
     },
   },
   animate: {
@@ -49,35 +75,6 @@ const SECONDARY_PATH_VARIANTS: Variants = {
   },
 };
 
-const CHECK_VARIANTS: Variants = {
-  normal: {
-    pathLength: 1,
-    y: 0,
-    transition: {
-      pathLength: { duration: 0.2, ease: "linear" },
-      y: {
-        duration: 0.2,
-        type: "spring",
-        stiffness: 200,
-        damping: 25,
-      },
-    },
-  },
-  animate: {
-    pathLength: [0, 1],
-    y: -2.5,
-    transition: {
-      pathLength: { duration: 0.4, ease: "linear" },
-      y: {
-        duration: 0.2,
-        type: "spring",
-        stiffness: 200,
-        damping: 25,
-      },
-    },
-  },
-};
-
 const AlarmClockCheckIcon = forwardRef<
   AlarmClockCheckIconHandle,
   AlarmClockCheckIconProps
@@ -90,17 +87,13 @@ const AlarmClockCheckIcon = forwardRef<
     void controls.start("normal");
   }, [controls]);
 
-  useImperativeHandle(
-    ref,
-    () => {
-      isControlledRef.current = ref != null;
-      return {
-        startAnimation: () => controls.start("animate"),
-        stopAnimation: () => resetToNormal(),
-      };
-    },
-    [controls, ref, resetToNormal],
-  );
+  useImperativeHandle(ref, () => {
+    isControlledRef.current = ref != null;
+    return {
+      startAnimation: () => controls.start("animate"),
+      stopAnimation: () => resetToNormal(),
+    };
+  }, [controls, ref, resetToNormal]);
 
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -149,7 +142,7 @@ const AlarmClockCheckIcon = forwardRef<
           r="8"
           animate={controls}
           initial="normal"
-          variants={SECONDARY_PATH_VARIANTS}
+          variants={PATH_VARIANTS}
         />
         <motion.path
           d="M5 3 2 6"
@@ -167,19 +160,19 @@ const AlarmClockCheckIcon = forwardRef<
           d="M6.38 18.7 4 21"
           animate={controls}
           initial="normal"
-          variants={SECONDARY_PATH_VARIANTS}
+          variants={PATH_VARIANTS}
         />
         <motion.path
           d="M17.64 18.67 20 21"
           animate={controls}
           initial="normal"
-          variants={SECONDARY_PATH_VARIANTS}
+          variants={PATH_VARIANTS}
         />
         <motion.path
           d="m9 13 2 2 4-4"
           animate={controls}
           initial="normal"
-          variants={CHECK_VARIANTS}
+          variants={PATH_VARIANTS}
         />
       </motion.svg>
     </div>

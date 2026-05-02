@@ -15,47 +15,31 @@ interface AlarmSmokeIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const ALARM_SMOKE_VIBRATE_VARIANTS: Variants = {
-  normal: {
-    y: 0,
-    x: 0,
-    transition: {
-      duration: 0.2,
-      type: "spring",
-      stiffness: 200,
-      damping: 25,
-    },
-  },
+const ALARM_VARIANTS: Variants = {
+  normal: { scale: 1 },
   animate: {
-    y: -2.5,
-    x: [-2, 2, -2, 2, 0],
+    scale: [1, 1.05, 1],
     transition: {
-      y: {
-        duration: 0.2,
-        type: "spring",
-        stiffness: 200,
-        damping: 25,
-      },
-      x: {
-        duration: 0.3,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "linear",
-      },
+      duration: 0.5,
+      ease: "easeInOut",
+      delay: 0.2,
+      repeat: Infinity,
     },
   },
 };
 
-const ALARAM_SMOKE_VARIANTS: Variants = {
-  normal: { pathLength: 1, y: 0 },
+const SMOKE_VARIANTS: Variants = {
+  normal: {
+    y: 0,
+    opacity: 1,
+  },
   animate: {
-    pathLength: [0, 1],
-    y: [-2],
+    y: [6, 0],
     opacity: [0, 1, 0],
     transition: {
-      duration: 1.2,
-      ease: "easeInOut",
+      duration: 1.4,
+      ease: "easeOut",
       repeat: Infinity,
-      repeatType: "loop",
     },
   },
 };
@@ -117,19 +101,19 @@ const AlarmSmokeIcon = forwardRef<AlarmSmokeIconHandle, AlarmSmokeIconProps>(
           <motion.path
             d="M11 21c0-2.5 2-2.5 2-5"
             animate={controls}
-            initial="normal"
-            variants={ALARAM_SMOKE_VARIANTS}
+            initial={{ y: 0, opacity: 1 }}
+            variants={SMOKE_VARIANTS}
           />
           <motion.path
             d="M16 21c0-2.5 2-2.5 2-5"
             animate={controls}
-            initial="normal"
-            variants={ALARAM_SMOKE_VARIANTS}
+            initial={{ y: 0, opacity: 1 }}
+            variants={SMOKE_VARIANTS}
           />
           <motion.g
             animate={controls}
-            initial="normal"
-            variants={ALARM_SMOKE_VIBRATE_VARIANTS}
+            initial={{ scale: 1, opacity: 1 }}
+            variants={ALARM_VARIANTS}
           >
             <motion.path d="m19 8-.8 3a1.25 1.25 0 0 1-1.2 1H7a1.25 1.25 0 0 1-1.2-1L5 8" />
             <motion.path d="M21 3a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1z" />
@@ -137,8 +121,8 @@ const AlarmSmokeIcon = forwardRef<AlarmSmokeIconHandle, AlarmSmokeIconProps>(
           <motion.path
             d="M6 21c0-2.5 2-2.5 2-5"
             animate={controls}
-            initial="normal"
-            variants={ALARAM_SMOKE_VARIANTS}
+            initial={{ y: 0, opacity: 1 }}
+            variants={SMOKE_VARIANTS}
           />
         </motion.svg>
       </div>

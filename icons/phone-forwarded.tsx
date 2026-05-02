@@ -30,13 +30,16 @@ const PHONE_FORWARDED_VARIANTS: Variants = {
 };
 
 const ARROW_VARIANTS: Variants = {
-  normal: { x: 0 },
-  animate: { x: [0, 1.3, 1.5, 0] },
+  normal: { x: 0, opacity: 1 },
+  animate: {
+    x: [-5, 1.3, 1.5, 0],
+    opacity: [0, 1],
+  },
 };
 
 const ARROW_TRANSITION: Transition = {
   times: [0, 0.4, 1],
-  duration: 0.5,
+  duration: 0.8,
 };
 
 const PhoneForwardedIcon = forwardRef<
@@ -93,13 +96,14 @@ const PhoneForwardedIcon = forwardRef<
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        style={{ overflow: "visible" }}
         animate={controls}
         initial="normal"
         variants={PHONE_FORWARDED_VARIANTS}
       >
         <motion.g
           animate={controls}
-          initial="normal"
+          initial={{ x: 0, opacity: 1 }}
           transition={ARROW_TRANSITION}
           variants={ARROW_VARIANTS}
         >

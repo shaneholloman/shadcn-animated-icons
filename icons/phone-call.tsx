@@ -118,6 +118,7 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          style={{ overflow: "visible" }}
           animate={svgControls}
           initial="normal"
           variants={PHONE_CALL_VARIANTS}

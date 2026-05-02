@@ -406,12 +406,12 @@ import { AlarmClockCheckIcon } from "./alarm-clock-check";
 import { AlarmClockMinusIcon } from "./alarm-clock-minus";
 import { AlarmSmokeIcon } from "./alarm-smoke";
 import { AlarmClockPlusIcon } from "./alarm-clock-plus";
-import { AntennaIcon } from "./antenna";
 import { PhoneIcon } from "./phone";
 import { PhoneCallIcon } from "./phone-call";
 import { PhoneForwardedIcon } from "./phone-forwarded";
 import { PhoneIncomingIcon } from "./phone-incoming";
 import { PhoneMissedIcon } from "./phone-missed";
+import { BicepsFlexedIcon } from "./biceps-flexed";
 
 type IconListItem = {
   name: string;
@@ -442,9 +442,9 @@ const ICON_LIST: IconListItem[] = [
     keywords: ["alarm", "clock", "check", "time", "schedule"],
   },
   {
-    name: "antenna",
-    icon: AntennaIcon,
-    keywords: ["antenna", "radio", "communication", "signal", "wireless"],
+    name: "biceps-flexed",
+    icon: BicepsFlexedIcon,
+    keywords: ["biceps", "flexed", "arm", "muscle", "strength"],
   },
   {
     name: "phone",

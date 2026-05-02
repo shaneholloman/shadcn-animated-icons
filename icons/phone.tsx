@@ -22,7 +22,7 @@ const PHONE_VARIANTS: Variants = {
   },
   animate: {
     rotate: [10, 20, -10, 10, 0],
-    scale: [1, 1.1, 1.2, 1.1, 1],
+    scale: [1, 1.1, 1],
     transition: {
       duration: 0.9,
       ease: "easeInOut",
@@ -36,7 +36,6 @@ const PhoneIcon = forwardRef<PhoneIconHandle, PhoneIconProps>(
     const isControlledRef = useRef(false);
 
     useImperativeHandle(ref, () => {
-      // Only skip default hover when a ref is passed — parent drives animation via the handle.
       isControlledRef.current = ref != null;
       return {
         startAnimation: () => controls.start("animate"),

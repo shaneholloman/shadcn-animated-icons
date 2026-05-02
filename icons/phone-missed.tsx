@@ -20,11 +20,29 @@ export interface PhoneMissedIconHandle {
   stopAnimation: () => void;
 }
 
-const PATH_VARIANTS: Variants = {
-  normal: { pathLength: 1 },
+const PHONE_MISSED_VARIANTS: Variants = {
+  initial: { scale: 1 },
   animate: {
-    pathLength: [0, 1],
-    transition: { duration: 0.4, ease: "linear" },
+    scale: [1, 1.1, 1],
+    transition: {
+      duration: 0.9,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const ARROW_VARIANTS: Variants = {
+  normal: {
+    scale: 1,
+    opacity: 1,
+  },
+  animate: {
+    scale: [1, 1.1, 1],
+    opacity: [0, 0.5, 1],
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
   },
 };
 
@@ -80,20 +98,22 @@ const PhoneMissedIcon = forwardRef<PhoneMissedIconHandle, PhoneMissedIconProps>(
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          style={{ overflow: "visible" }}
         >
-          <motion.path
-            d="m16 2 6 6"
+          <motion.g
             animate={controls}
-            initial="normal"
-            variants={PATH_VARIANTS}
-          />
+            initial={{ y: 0, opacity: 1 }}
+            variants={ARROW_VARIANTS}
+          >
+            <path d="m16 2 6 6" />
+            <path d="m22 2-6 6" />
+          </motion.g>
           <motion.path
-            d="m22 2-6 6"
+            d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
             animate={controls}
-            initial="normal"
-            variants={PATH_VARIANTS}
+            initial="initial"
+            variants={PHONE_MISSED_VARIANTS}
           />
-          <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
         </motion.svg>
       </div>
     );
