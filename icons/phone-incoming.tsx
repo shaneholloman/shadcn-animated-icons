@@ -29,11 +29,13 @@ const PHONE_MISSED_VARIANTS: Variants = {
 const ARROW_VARIANTS: Variants = {
   normal: {
     scale: 1,
-    opacity: 1,
+    translateX: 0,
+    translateY: 0,
   },
   animate: {
     scale: [1, 1.2, 1],
-    opacity: [0, 0.5, 1],
+    translateX: [0, -1, 0],
+    translateY: [0, 1, 0],
     transition: {
       duration: 0.8,
       ease: "easeInOut",

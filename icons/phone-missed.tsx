@@ -23,7 +23,7 @@ export interface PhoneMissedIconHandle {
 const PHONE_MISSED_VARIANTS: Variants = {
   initial: { scale: 1 },
   animate: {
-    scale: [1, 1.1, 1],
+    scale: [1, 1.05, 1],
     transition: {
       duration: 0.9,
       ease: "easeInOut",
@@ -34,11 +34,9 @@ const PHONE_MISSED_VARIANTS: Variants = {
 const ARROW_VARIANTS: Variants = {
   normal: {
     scale: 1,
-    opacity: 1,
   },
   animate: {
-    scale: [1, 1.1, 1],
-    opacity: [0, 0.5, 1],
+    scale: [1, 1.2, 1],
     transition: {
       duration: 0.8,
       ease: "easeInOut",

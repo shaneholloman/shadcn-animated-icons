@@ -29,17 +29,33 @@ const PHONE_FORWARDED_VARIANTS: Variants = {
   },
 };
 
-const ARROW_VARIANTS: Variants = {
-  normal: { x: 0, opacity: 1 },
+const HEAD_VARIANTS: Variants = {
+  normal: {
+    translateX: 0,
+  },
   animate: {
-    x: [-5, 1.3, 1.5, 0],
-    opacity: [0, 1],
+    translateX: [0, 3, 0],
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
   },
 };
 
-const ARROW_TRANSITION: Transition = {
-  times: [0, 0.4, 1],
-  duration: 0.8,
+const SHAFT_VARIANTS: Variants = {
+  normal: {
+    translateX: 0,
+    scale: 1,
+  },
+  animate: {
+    translateX: [0, 3, 0],
+    scale: [1, 0.85, 1],
+    originX: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
 };
 
 const PhoneForwardedIcon = forwardRef<
@@ -101,15 +117,18 @@ const PhoneForwardedIcon = forwardRef<
         initial="normal"
         variants={PHONE_FORWARDED_VARIANTS}
       >
-        <motion.g
+        <motion.path
+          d="M14 6h8"
           animate={controls}
-          initial={{ x: 0, opacity: 1 }}
-          transition={ARROW_TRANSITION}
-          variants={ARROW_VARIANTS}
-        >
-          <path d="M14 6h8" />
-          <path d="m18 2 4 4-4 4" />
-        </motion.g>
+          initial="normal"
+          variants={SHAFT_VARIANTS}
+        />
+        <motion.path
+          d="m18 2 4 4-4 4"
+          animate={controls}
+          initial="normal"
+          variants={HEAD_VARIANTS}
+        />
 
         <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
       </motion.svg>
