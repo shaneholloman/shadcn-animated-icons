@@ -35,23 +35,6 @@ const CARD_VARIANTS: Variants = {
   },
 };
 
-const STRIPE_VARIANTS: Variants = {
-  normal: {
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  animate: {
-    opacity: [1, 0.35, 1, 0.35, 1],
-    transition: {
-      duration: 0.7,
-      times: [0, 0.25, 0.5, 0.75, 1],
-      ease: "easeInOut",
-    },
-  },
-};
-
 const CreditCardIcon = forwardRef<CreditCardIconHandle, CreditCardIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
@@ -106,21 +89,9 @@ const CreditCardIcon = forwardRef<CreditCardIconHandle, CreditCardIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.g
-            animate={controls}
-            initial="normal"
-            variants={CARD_VARIANTS}
-          >
+          <motion.g animate={controls} initial="normal" variants={CARD_VARIANTS}>
             <rect height="14" rx="2" width="20" x="2" y="5" />
-            <motion.line
-              animate={controls}
-              initial="normal"
-              variants={STRIPE_VARIANTS}
-              x1="2"
-              x2="22"
-              y1="10"
-              y2="10"
-            />
+            <line x1="2" x2="22" y1="10" y2="10" />
           </motion.g>
         </svg>
       </div>

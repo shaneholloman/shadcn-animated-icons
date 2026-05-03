@@ -16,59 +16,20 @@ interface BriefcaseBusinessIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const HANDLE_VARIANTS: Variants = {
+const SWAY_VARIANTS: Variants = {
   normal: {
-    y: 0,
+    rotate: 0,
     transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 18,
+      duration: 0.3,
+      ease: "easeOut",
     },
   },
   animate: {
-    y: [-1.5, 0],
+    rotate: [0, 4, -3, 2, 0],
     transition: {
-      type: "spring",
-      stiffness: 320,
-      damping: 10,
-      mass: 0.6,
-    },
-  },
-};
-
-const BODY_VARIANTS: Variants = {
-  normal: {
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 18,
-    },
-  },
-  animate: {
-    y: [0, 0.6, 0],
-    transition: {
-      duration: 0.4,
+      duration: 0.9,
       ease: "easeInOut",
-    },
-  },
-};
-
-const LOCK_VARIANTS: Variants = {
-  normal: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  animate: {
-    scale: [1, 1.8, 1],
-    opacity: [1, 0.6, 1],
-    transition: {
-      duration: 0.6,
-      delay: 0.1,
-      ease: "easeInOut",
+      times: [0, 0.25, 0.5, 0.75, 1],
     },
   },
 };
@@ -117,35 +78,26 @@ const BriefcaseBusinessIcon = forwardRef<
       onMouseLeave={handleMouseLeave}
       {...props}
     >
-      <svg
+      <motion.svg
+        animate={controls}
         fill="none"
         height={size}
+        initial="normal"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
+        style={{ transformOrigin: "12px 4px" }}
+        variants={SWAY_VARIANTS}
         viewBox="0 0 24 24"
         width={size}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <motion.path
-          animate={controls}
-          d="M12 12h.01"
-          initial="normal"
-          style={{ transformOrigin: "12px 12px" }}
-          variants={LOCK_VARIANTS}
-        />
-        <motion.path
-          animate={controls}
-          d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"
-          initial="normal"
-          variants={HANDLE_VARIANTS}
-        />
-        <motion.g animate={controls} initial="normal" variants={BODY_VARIANTS}>
-          <path d="M22 13a18.15 18.15 0 0 1-20 0" />
-          <rect height="14" rx="2" width="20" x="2" y="6" />
-        </motion.g>
-      </svg>
+        <path d="M12 12h.01" />
+        <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+        <rect height="14" rx="2" width="20" x="2" y="6" />
+      </motion.svg>
     </div>
   );
 });
