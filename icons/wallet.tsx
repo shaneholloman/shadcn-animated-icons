@@ -18,21 +18,22 @@ interface WalletIconProps extends HTMLAttributes<HTMLDivElement> {
 
 const VARIANTS: Variants = {
   normal: {
-    pathLength: 1,
-    opacity: 1,
+    y: 0,
+    rotate: 0,
     transition: {
       duration: 0.3,
+      ease: "easeOut",
     },
   },
-  animate: (custom: number) => ({
-    pathLength: [0, 1],
-    opacity: [0, 1],
+  animate: {
+    y: [0, -3, 0],
+    rotate: [0, -4, 0],
     transition: {
-      duration: 0.5,
-      delay: custom * 0.2,
+      duration: 0.55,
       ease: "easeInOut",
+      times: [0, 0.45, 1],
     },
-  }),
+  },
 };
 
 const WalletIcon = forwardRef<WalletIconHandle, WalletIconProps>(
@@ -77,32 +78,24 @@ const WalletIcon = forwardRef<WalletIconHandle, WalletIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <svg
+        <motion.svg
+          animate={controls}
           fill="none"
           height={size}
+          initial="normal"
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
+          style={{ transformOrigin: "12px 12px" }}
+          variants={VARIANTS}
           viewBox="0 0 24 24"
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
-            animate={controls}
-            custom={0}
-            d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"
-            initial="normal"
-            variants={VARIANTS}
-          />
-          <motion.path
-            animate={controls}
-            custom={1}
-            d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
-            initial="normal"
-            variants={VARIANTS}
-          />
-        </svg>
+          <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+          <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+        </motion.svg>
       </div>
     );
   }
