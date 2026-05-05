@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "registryDependencies": [],
   "dependencies": ["motion"],
-  "devDependencies": [],
+  "devDependencies": [],https://github.com/pqoqubbw/icons/pull/245/conflict?name=public%252Fr%252Freceipt.json&base_oid=2d833ec1352e02ab64c1b878bd842220598e9a7c&head_oid=5f0a4ce420a729fed4537869d57955746035a14a
   "files": [
     {
       "path": "receipt.tsx",
