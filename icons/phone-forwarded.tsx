@@ -1,10 +1,9 @@
 "use client";
 
-import { Transition, useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface PhoneForwardedIconHandle {
   startAnimation: () => void;
@@ -75,24 +74,24 @@ const PhoneForwardedIcon = forwardRef<
 
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!isControlledRef.current) {
-        controls.start("animate");
-      } else {
+      if (isControlledRef.current) {
         onMouseEnter?.(e);
+      } else {
+        controls.start("animate");
       }
     },
-    [controls, onMouseEnter],
+    [controls, onMouseEnter]
   );
 
   const handleMouseLeave = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!isControlledRef.current) {
-        controls.start("normal");
-      } else {
+      if (isControlledRef.current) {
         onMouseLeave?.(e);
+      } else {
+        controls.start("normal");
       }
     },
-    [controls, onMouseLeave],
+    [controls, onMouseLeave]
   );
 
   return (
@@ -103,29 +102,29 @@ const PhoneForwardedIcon = forwardRef<
       {...props}
     >
       <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
+        animate={controls}
         fill="none"
+        height={size}
+        initial="normal"
         stroke="currentColor"
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="2"
         style={{ overflow: "visible" }}
-        animate={controls}
-        initial="normal"
         variants={PHONE_FORWARDED_VARIANTS}
+        viewBox="0 0 24 24"
+        width={size}
+        xmlns="http://www.w3.org/2000/svg"
       >
         <motion.path
-          d="M14 6h8"
           animate={controls}
+          d="M14 6h8"
           initial="normal"
           variants={SHAFT_VARIANTS}
         />
         <motion.path
-          d="m18 2 4 4-4 4"
           animate={controls}
+          d="m18 2 4 4-4 4"
           initial="normal"
           variants={HEAD_VARIANTS}
         />

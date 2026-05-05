@@ -1,10 +1,9 @@
 "use client";
 
-import { useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface AlarmClockPlusIconHandle {
   startAnimation: () => void;
@@ -92,24 +91,24 @@ const AlarmClockPlusIcon = forwardRef<
 
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!isControlledRef.current) {
-        controls.start("animate");
-      } else {
+      if (isControlledRef.current) {
         onMouseEnter?.(e);
+      } else {
+        controls.start("animate");
       }
     },
-    [controls, onMouseEnter],
+    [controls, onMouseEnter]
   );
 
   const handleMouseLeave = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!isControlledRef.current) {
-        controls.start("normal");
-      } else {
+      if (isControlledRef.current) {
         onMouseLeave?.(e);
+      } else {
+        controls.start("normal");
       }
     },
-    [controls, onMouseLeave],
+    [controls, onMouseLeave]
   );
 
   return (
@@ -120,58 +119,58 @@ const AlarmClockPlusIcon = forwardRef<
       {...props}
     >
       <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
         fill="none"
+        height={size}
         stroke="currentColor"
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="2"
         style={{ overflow: "visible" }}
+        viewBox="0 0 24 24"
+        width={size}
+        xmlns="http://www.w3.org/2000/svg"
       >
         <motion.circle
+          animate={controls}
           cx="12"
           cy="13"
+          initial="normal"
           r="8"
-          animate={controls}
-          initial="normal"
           variants={PATH_VARIANTS}
         />
         <motion.path
+          animate={controls}
           d="M5 3 2 6"
-          animate={controls}
           initial="normal"
           variants={SECONDARY_PATH_VARIANTS}
         />
         <motion.path
+          animate={controls}
           d="m22 6-3-3"
-          animate={controls}
           initial="normal"
           variants={SECONDARY_PATH_VARIANTS}
         />
         <motion.path
+          animate={controls}
           d="M6.38 18.7 4 21"
-          animate={controls}
           initial="normal"
           variants={PATH_VARIANTS}
         />
         <motion.path
+          animate={controls}
           d="M17.64 18.67 20 21"
-          animate={controls}
           initial="normal"
           variants={PATH_VARIANTS}
         />
         <motion.path
+          animate={controls}
           d="M9 13h6"
-          animate={controls}
           initial="normal"
           variants={PATH_VARIANTS}
         />
         <motion.path
-          d="M12 10v6"
           animate={controls}
+          d="M12 10v6"
           initial="normal"
           variants={PATH_VARIANTS}
         />

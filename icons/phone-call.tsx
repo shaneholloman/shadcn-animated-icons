@@ -1,10 +1,9 @@
 "use client";
 
-import { useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface PhoneCallIconHandle {
   startAnimation: () => void;
@@ -67,8 +66,7 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
       isControlledRef.current = ref != null;
       return {
         startAnimation: async () => {
-          void svgControls.start("animate");
-          await runPathIntro();
+          await Promise.all([svgControls.start("animate"), runPathIntro()]);
         },
         stopAnimation: () => {
           svgControls.start("normal");
@@ -82,11 +80,10 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
         if (isControlledRef.current) {
           onMouseEnter?.(e);
         } else {
-          void svgControls.start("animate");
-          await runPathIntro();
+          await Promise.all([svgControls.start("animate"), runPathIntro()]);
         }
       },
-      [onMouseEnter, runPathIntro, svgControls],
+      [onMouseEnter, runPathIntro, svgControls]
     );
 
     const handleMouseLeave = useCallback(
@@ -98,7 +95,7 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
           pathControls.start("normal");
         }
       },
-      [onMouseLeave, pathControls, svgControls],
+      [onMouseLeave, pathControls, svgControls]
     );
 
     return (
@@ -109,31 +106,31 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
         {...props}
       >
         <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
+          animate={svgControls}
           fill="none"
+          height={size}
+          initial="normal"
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
           style={{ overflow: "visible" }}
-          animate={svgControls}
-          initial="normal"
           variants={PHONE_CALL_VARIANTS}
+          viewBox="0 0 24 24"
+          width={size}
+          xmlns="http://www.w3.org/2000/svg"
         >
           <motion.path
-            d="M13 2a9 9 0 0 1 9 9"
             animate={pathControls}
             custom={2}
+            d="M13 2a9 9 0 0 1 9 9"
             initial={{ opacity: 1 }}
             variants={PATH_VARIANTS}
           />
           <motion.path
-            d="M13 6a5 5 0 0 1 5 5"
             animate={pathControls}
             custom={1}
+            d="M13 6a5 5 0 0 1 5 5"
             initial={{ opacity: 1 }}
             variants={PATH_VARIANTS}
           />
@@ -141,7 +138,7 @@ const PhoneCallIcon = forwardRef<PhoneCallIconHandle, PhoneCallIconProps>(
         </motion.svg>
       </div>
     );
-  },
+  }
 );
 
 PhoneCallIcon.displayName = "PhoneCallIcon";

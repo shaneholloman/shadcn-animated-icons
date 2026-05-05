@@ -1,10 +1,9 @@
 "use client";
 
-import { useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface AlarmSmokeIconHandle {
   startAnimation: () => void;
@@ -23,7 +22,7 @@ const ALARM_VARIANTS: Variants = {
       duration: 0.5,
       ease: "easeInOut",
       delay: 0.2,
-      repeat: Infinity,
+      repeat: Number.POSITIVE_INFINITY,
     },
   },
 };
@@ -39,7 +38,7 @@ const SMOKE_VARIANTS: Variants = {
     transition: {
       duration: 1.4,
       ease: "easeOut",
-      repeat: Infinity,
+      repeat: Number.POSITIVE_INFINITY,
     },
   },
 };
@@ -59,24 +58,24 @@ const AlarmSmokeIcon = forwardRef<AlarmSmokeIconHandle, AlarmSmokeIconProps>(
 
     const handleMouseEnter = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlledRef.current) {
-          controls.start("animate");
-        } else {
+        if (isControlledRef.current) {
           onMouseEnter?.(e);
+        } else {
+          controls.start("animate");
         }
       },
-      [controls, onMouseEnter],
+      [controls, onMouseEnter]
     );
 
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlledRef.current) {
-          controls.start("normal");
-        } else {
+        if (isControlledRef.current) {
           onMouseLeave?.(e);
+        } else {
+          controls.start("normal");
         }
       },
-      [controls, onMouseLeave],
+      [controls, onMouseLeave]
     );
 
     return (
@@ -87,26 +86,26 @@ const AlarmSmokeIcon = forwardRef<AlarmSmokeIconHandle, AlarmSmokeIconProps>(
         {...props}
       >
         <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
           fill="none"
+          height={size}
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
           style={{ overflow: "visible" }}
+          viewBox="0 0 24 24"
+          width={size}
+          xmlns="http://www.w3.org/2000/svg"
         >
           <motion.path
-            d="M11 21c0-2.5 2-2.5 2-5"
             animate={controls}
+            d="M11 21c0-2.5 2-2.5 2-5"
             initial={{ y: 0, opacity: 1 }}
             variants={SMOKE_VARIANTS}
           />
           <motion.path
-            d="M16 21c0-2.5 2-2.5 2-5"
             animate={controls}
+            d="M16 21c0-2.5 2-2.5 2-5"
             initial={{ y: 0, opacity: 1 }}
             variants={SMOKE_VARIANTS}
           />
@@ -119,15 +118,15 @@ const AlarmSmokeIcon = forwardRef<AlarmSmokeIconHandle, AlarmSmokeIconProps>(
             <motion.path d="M21 3a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1z" />
           </motion.g>
           <motion.path
-            d="M6 21c0-2.5 2-2.5 2-5"
             animate={controls}
+            d="M6 21c0-2.5 2-2.5 2-5"
             initial={{ y: 0, opacity: 1 }}
             variants={SMOKE_VARIANTS}
           />
         </motion.svg>
       </div>
     );
-  },
+  }
 );
 
 AlarmSmokeIcon.displayName = "AlarmSmokeIcon";
