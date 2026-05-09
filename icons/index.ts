@@ -255,6 +255,16 @@ import { PoundSterlingIcon } from "@/icons/pound-sterling";
 import { RabbitIcon } from "@/icons/rabbit";
 import { RadioIcon } from "@/icons/radio";
 import { RadioTowerIcon } from "@/icons/radio-tower";
+import { ReceiptIcon } from "@/icons/receipt";
+import { ReceiptCentIcon } from "@/icons/receipt-cent";
+import { ReceiptEuroIcon } from "@/icons/receipt-euro";
+import { ReceiptIndianRupeeIcon } from "@/icons/receipt-indian-rupee";
+import { ReceiptJapaneseYenIcon } from "@/icons/receipt-japanese-yen";
+import { ReceiptPoundSterlingIcon } from "@/icons/receipt-pound-sterling";
+import { ReceiptRussianRubleIcon } from "@/icons/receipt-russian-ruble";
+import { ReceiptSwissFrancIcon } from "@/icons/receipt-swiss-franc";
+import { ReceiptTextIcon } from "@/icons/receipt-text";
+import { ReceiptTurkishLiraIcon } from "@/icons/receipt-turkish-lira";
 import { RedoIcon } from "@/icons/redo";
 import { RedoDotIcon } from "@/icons/redo-dot";
 import { RefreshCCWIcon } from "@/icons/refresh-ccw";
@@ -344,11 +354,16 @@ import { XIcon } from "@/icons/x";
 import { YoutubeIcon } from "@/icons/youtube";
 import { ZapIcon } from "@/icons/zap";
 import { ZapOffIcon } from "@/icons/zap-off";
+import { AlarmClockCheckIcon } from "./alarm-clock-check";
+import { AlarmClockMinusIcon } from "./alarm-clock-minus";
+import { AlarmClockPlusIcon } from "./alarm-clock-plus";
+import { AlarmSmokeIcon } from "./alarm-smoke";
 import { BatteryIcon } from "./battery";
 import { BatteryChargingIcon } from "./battery-charging";
 import { BatteryPlusIcon } from "./battery-plus";
 import { BatteryWarningIcon } from "./battery-warning";
 import { BellElectricIcon } from "./bell-electric";
+import { BicepsFlexedIcon } from "./biceps-flexed";
 import { BriefcaseBusinessIcon } from "./briefcase-business";
 import { ChessBishopIcon } from "./chess-bishop";
 import { ChessKingIcon } from "./chess-king";
@@ -404,16 +419,11 @@ import { HandHelpingIcon } from "./hand-helping";
 import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
-import { ReceiptIcon } from "./receipt";
-import { ReceiptCentIcon } from "./receipt-cent";
-import { ReceiptEuroIcon } from "./receipt-euro";
-import { ReceiptIndianRupeeIcon } from "./receipt-indian-rupee";
-import { ReceiptJapaneseYenIcon } from "./receipt-japanese-yen";
-import { ReceiptPoundSterlingIcon } from "./receipt-pound-sterling";
-import { ReceiptRussianRubleIcon } from "./receipt-russian-ruble";
-import { ReceiptSwissFrancIcon } from "./receipt-swiss-franc";
-import { ReceiptTextIcon } from "./receipt-text";
-import { ReceiptTurkishLiraIcon } from "./receipt-turkish-lira";
+import { PhoneIcon } from "./phone";
+import { PhoneCallIcon } from "./phone-call";
+import { PhoneForwardedIcon } from "./phone-forwarded";
+import { PhoneIncomingIcon } from "./phone-incoming";
+import { PhoneMissedIcon } from "./phone-missed";
 import { TruckIcon } from "./truck";
 import { WalletIcon } from "./wallet";
 
@@ -467,72 +477,192 @@ const ICON_LIST: IconListItem[] = [
   {
     name: "receipt",
     icon: ReceiptIcon,
-    keywords: ["receipt", "invoice", "receipt icon"],
+    keywords: [
+      "receipt",
+      "bill",
+      "voucher",
+      "slip",
+      "check",
+      "counterfoil",
+      "invoice",
+      "details",
+      "transaction",
+      "purchase",
+      "expense",
+    ],
   },
   {
     name: "receipt-cent",
     icon: ReceiptCentIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "cent", "currency"],
+    keywords: [
+      "receipt",
+      "cent",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+      "invoice",
+    ],
   },
   {
     name: "receipt-euro",
     icon: ReceiptEuroIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "euro"],
+    keywords: [
+      "receipt",
+      "euro",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+      "invoice",
+    ],
   },
   {
     name: "receipt-indian-rupee",
     icon: ReceiptIndianRupeeIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "indian rupee", "rupee"],
+    keywords: [
+      "receipt",
+      "indian rupee",
+      "inr",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+    ],
   },
   {
     name: "receipt-japanese-yen",
     icon: ReceiptJapaneseYenIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "japanese yen", "yen"],
+    keywords: [
+      "receipt",
+      "japanese yen",
+      "yen",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+    ],
   },
   {
     name: "receipt-pound-sterling",
     icon: ReceiptPoundSterlingIcon,
     keywords: [
       "receipt",
-      "invoice",
-      "receipt icon",
       "pound sterling",
-      "sterling",
+      "gbp",
+      "currency",
+      "money",
+      "payment",
+      "bill",
     ],
   },
   {
     name: "receipt-russian-ruble",
     icon: ReceiptRussianRubleIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "russian ruble", "ruble"],
+    keywords: [
+      "receipt",
+      "russian ruble",
+      "ruble",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+    ],
   },
   {
     name: "receipt-swiss-franc",
     icon: ReceiptSwissFrancIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "swiss franc", "franc"],
+    keywords: [
+      "receipt",
+      "swiss franc",
+      "chf",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+    ],
   },
   {
     name: "receipt-text",
     icon: ReceiptTextIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "text"],
+    keywords: ["receipt", "text", "details", "invoice", "bill", "purchase"],
   },
   {
     name: "receipt-turkish-lira",
     icon: ReceiptTurkishLiraIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "turkish lira", "lira"],
+    keywords: [
+      "receipt",
+      "turkish lira",
+      "try",
+      "currency",
+      "money",
+      "payment",
+      "bill",
+    ],
   },
   {
     name: "stamp",
     icon: StampIcon,
     keywords: [
       "stamp",
-      "seal",
-      "approve",
+      "postage",
+      "letter",
+      "mail",
       "mark",
-      "ink",
-      "press",
+      "seal",
       "official",
-      "validate",
+      "document",
     ],
+  },
+  {
+    name: "alarm-clock-check",
+    icon: AlarmClockCheckIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "alarm-clock-minus",
+    icon: AlarmClockMinusIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "alarm-smoke",
+    icon: AlarmSmokeIcon,
+    keywords: ["alarm", "smoke", "fire", "smoke", "fire alarm"],
+  },
+  {
+    name: "alarm-clock-plus",
+    icon: AlarmClockPlusIcon,
+    keywords: ["alarm", "clock", "check", "time", "schedule"],
+  },
+  {
+    name: "biceps-flexed",
+    icon: BicepsFlexedIcon,
+    keywords: ["biceps", "flexed", "arm", "muscle", "strength"],
+  },
+  {
+    name: "phone",
+    icon: PhoneIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-call",
+    icon: PhoneCallIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-forward",
+    icon: PhoneForwardedIcon,
+    keywords: ["phone", "forward", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-incoming",
+    icon: PhoneIncomingIcon,
+    keywords: ["phone", "incoming", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-missed",
+    icon: PhoneMissedIcon,
+    keywords: ["phone", "missed", "communication", "signal", "wireless"],
   },
   {
     name: "layout-grid",
